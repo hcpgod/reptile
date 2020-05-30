@@ -14,7 +14,7 @@ public class Student {
 	private Set<Student> studentSet;
 	private Properties studentProperties;
 	
-	
+	//更新1
 	
 	public Student(String name, int age, String className, List<Student> studentList, Map<String, Student> studentMap,
 			Set<Student> studentSet, Properties studentProperties) {

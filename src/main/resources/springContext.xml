@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+ <!--    开启ioc注解支持-->
+ <!--    <context:annotation-config/> -->
+<!--    开启aop注解支持-->
+   <!--  <aop:aspectj-autoproxy/> -->
+    <bean id="student1" class="hcp.Student">
+   		<property name="name" value="张三"></property>
+   		<property name="age" value="11"></property>
+   		<property name="className" value="11"></property>
+   </bean>
+   <bean id="student2" class="hcp.Student" factory-method="StudentFactory">
+   		<constructor-arg value="张三"></constructor-arg>
+   		<constructor-arg value="18"></constructor-arg>
+   		<constructor-arg value="三年级"></constructor-arg>
+   </bean>
+   <bean id="student3" factory-bean="student1" factory-method="studentFactory">
+   		<constructor-arg value="赵四"></constructor-arg>
+   		<constructor-arg value="18"></constructor-arg>
+   		<constructor-arg value="五年级"></constructor-arg>
+   </bean>
+   <bean id="student4" class="hcp.Student">
+   		<property name="studentList">
+   			 <list>
+   			 	
+                <ref bean="student1" />
+                <bean class="hcp.Student">
+	   				<property name="name" value="张三"></property>
+			   		<property name="age" value="11"></property>
+	   				<property name="className" value="11"></property>
+	  			</bean>
+            </list>
+   		</property>
+   </bean>
+</beans>
